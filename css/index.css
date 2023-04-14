@@ -1,0 +1,48 @@
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css");
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,200;8..144,400;8..144,600;8..144,800;8..144,1000&display=swap");
+
+/* DESKTOP STYLES START*/
+/* BODY */
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  box-shadow: inset 0 0 5px grey;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--bg-dark);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--bg-light);
+}
+
+body {
+  font-family: "Roboto Flex", sans-serif;
+  background-color: var(--bg-light);
+}
+
+.body-container {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+/* DESKTOP STYLES END */
+
+/* MOBILE STYLES START */
+@media only screen and (max-width: 600px) {
+  .body-container {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
+}
+/* MOBILE STYLES END */

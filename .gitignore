@@ -1,0 +1,42 @@
+# Build and Release Folders
+bin-debug/
+bin-release/
+[Oo]bj/
+[Bb]in/
+
+# Other files and folders
+.settings/
+/images
+**/thumbs/
+/video
+dbh.atp.php
+dbh.gd.php
+dbh.wamp.php
+dbh-atp.php
+dbh-wamp.php
+dbh-inc.php
+dbh-wamp.inc.php
+dbh-atp.inc.php
+dbh-gd.inc.php
+dbh-gd.php
+dbh.inc.php
+/confirmations
+
+# Executables
+*.swf
+*.air
+*.ipa
+*.apk
+*.mp3
+*.mp4
+*.zip
+*.rar
+*.iso
+*.jpg
+*.bmp
+*.png
+*.psd
+
+# Project files, i.e. `.project`, `.actionScriptProperties` and `.flexProperties`
+# should NOT be excluded as they contain compiler settings and other important
+# information for Eclipse / Flash Builder.

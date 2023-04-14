@@ -1,0 +1,188 @@
+.table-note {
+  text-transform: uppercase;
+  color: var(--text-dark);
+  font-weight: 800;
+  text-shadow: 0.125rem 0.125rem 0.125rem var(--indicator-fill);
+}
+
+.fl-table {
+  position: relative;
+  border-radius: 0.3125rem;
+  font-size: 0.75rem;
+  font-weight: normal;
+  border: none;
+  border-collapse: collapse;
+  width: 100%;
+  max-width: 61.25rem;
+  margin-bottom: 2em;
+  white-space: nowrap;
+  background-color: var(--bg-light);
+  z-index: 0;
+}
+
+.fl-table td,
+.fl-table th {
+  text-align: center;
+  padding: 0.5rem;
+}
+
+.fl-table td {
+  border-right: 0.0625rem solid var(--bg-dark);
+  font-size: 0.75rem;
+}
+
+.fl-table td:first-child {
+  border-left: 0.0625rem solid var(--bg-dark);
+}
+
+.fl-table thead th {
+  position: sticky;
+  top: 1.03125em;
+  color: var(--text-light);
+  background: var(--bg-dark);
+  border-right: 0.0625rem solid var(--bg-light);
+  z-index: 99;
+}
+
+.fl-table thead th:first-child {
+  border-left: 0.0625rem solid var(--bg-dark);
+}
+
+.fl-table thead th:last-child {
+  border-right: 0.0625rem solid var(--bg-dark);
+}
+
+.fl-table thead th:nth-child(odd) {
+  color: var(--text-light);
+  background: var(--bg-dark);
+}
+
+.fl-table tr:nth-child(even) {
+  background: var(--indicator-fill);
+}
+
+.fl-table tr:last-child {
+  border-bottom: 0.0625rem solid var(--bg-dark);
+}
+
+.fl-table tbody td form#cart-qty {
+  display: flex;
+  align-items: center;
+}
+
+.fl-table tbody td form input#qty {
+  width: 4em;
+  height: 2em;
+  margin-right: 0.25em;
+  background-color: var(--bg-light);
+  color: var(--text-dark);
+  padding: 0 0.25em;
+  border-radius: 0.3125rem;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.fl-table tbody tr td input#update-cart-qty {
+  color: var(--text-dark);
+  text-shadow: 0.125rem 0.125rem 0.25rem var(--bg-dark);
+  box-shadow: 0.125rem 0.125rem 0.3125rem var(--bg-dark);
+  padding: 0.25em 0.5em;
+  margin: 0;
+  border: none;
+  background-color: var(--bg-light);
+  cursor: pointer;
+  outline: none;
+}
+
+.fl-table tbody tr td button#remove-link {
+  font-size: x-large;
+  color: var(--warning);
+  /* text-shadow: 0.0125rem 0.0125rem 0.5rem var(--bg-dark);
+  box-shadow: 0.125rem 0.125rem 0.3125rem var(--bg-dark); */
+  padding: 0;
+  margin: 0;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  outline: none;
+}
+
+.fl-table tbody td form input#addbtn {
+  background-color: var(--bg-light);
+  color: var(--text-dark);
+  border-radius: 0.3125rem;
+}
+
+.fl-table tbody td form input#qty {
+  text-align: center;
+}
+
+/* Responsive */
+
+@media (max-width: 767px) {
+  .fl-table {
+    display: block;
+    width: 100%;
+    font-size: 0.6875rem;
+  }
+  .table-wrapper:before {
+    content: "Scroll horizontally >";
+    display: block;
+    text-align: right;
+    font-size: 0.6875rem; /* 11px converted to rem */
+    color: var(--text-light);
+    padding: 0 0 1.5625em; /* 10px converted to em */
+  }
+  .fl-table thead,
+  .fl-table tbody,
+  .fl-table thead th {
+    display: block;
+  }
+  .fl-table thead th:last-child {
+    border-bottom: none;
+  }
+  .fl-table thead {
+    float: left;
+  }
+  .fl-table tbody {
+    width: auto;
+    position: relative;
+    overflow-x: auto;
+  }
+  .fl-table td,
+  .fl-table th {
+    padding: 0.625em 0.625em 0.625em 0.625em; /* 10px converted to em */
+    height: 2.1875rem; /* 35px converted to rem */
+    vertical-align: middle;
+    box-sizing: border-box;
+    overflow-x: hidden;
+    overflow-y: auto;
+    width: 7.5rem; /* 120px converted to rem */
+    font-size: 0.6875rem; /* 11px converted to rem */
+    text-overflow: ellipsis;
+  }
+  .fl-table thead th {
+    text-align: left;
+    border-bottom: 0.0625rem solid var(--bg-light); /* 1px converted to rem */
+  }
+  .fl-table tbody tr {
+    display: table-cell;
+  }
+  .fl-table tbody tr:nth-child(odd) {
+    background: var(--indicator-fill);
+  }
+  .fl-table tr td:nth-child(odd) {
+    background: var(--bg-light);
+  }
+  .fl-table tr td {
+    border-right: 0.125rem solid var(--bg-dark); /* 2px converted to rem */
+  }
+  .fl-table tbody td {
+    display: block;
+    text-align: center;
+  }
+}

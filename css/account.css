@@ -1,0 +1,425 @@
+.holder-account {
+    display: flex;
+    justify-content: space-between;
+    background: var(--bg-light);
+    border-radius: 0.625rem;
+    box-shadow: 0.3125rem 0.5rem 0.625rem var(--text-dark);
+    position: relative;
+    overflow: hidden;
+    width: 60rem;
+    max-width: 100%;
+    height: auto;
+    padding: 0.9375rem 0;
+}
+
+.holder-account .tabbed .tab-list {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    margin-left: 1em;
+    position: relative;
+}
+
+.tabbed {
+    display: flex;
+}
+
+.tabbed .tab-list label {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 1.675em;
+    width: 14rem;
+    font-size: 1.5em;
+    font-weight: bolder;
+    cursor: pointer;
+    background-color: var(--bg-dark);
+    color: var(--text-light);
+    padding: 0 0.25em;
+    border: 0.125em solid var(--bg-dark);
+    border-radius: 0.3125em;
+    box-shadow: 0.125em 0.125em 0.125em 0.0625em var(--indicator-fill);
+}
+
+.tabbed .tab-list label:hover {
+    color: var(--indicator-fill);
+}
+
+.tab-list label:not(:last-of-type) {
+    margin-bottom: 0.75em;
+}
+
+.tabbed .tab-list ion-icon {
+    font-size: 1.5em;
+}
+
+.tabbed .tab-list label.activated {
+    background-color: var(--bg-light);
+    color: var(--text-dark);
+    box-shadow: 0.125em 0.125em 0.125em 0.0625em var(--bg-dark);
+    cursor: default;
+}
+
+.account-content {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    height: 100%;
+    width: 40rem;
+    font-size: 0.75em;
+    font-weight: normal;
+    color: var(--text-dark);
+    padding: 0.5em;
+    margin-right: 1em;
+}
+
+.account-info {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.account-data-header {
+    font-size: 1.675em;
+    text-align: justify;
+    font-weight: bolder;
+    color: var(--text-dark);
+    text-transform: uppercase;
+    margin-bottom: 0.5em;
+    text-decoration: underline;
+}
+
+.account-data {
+    width: 100%;
+    font-size: 1rem;
+    text-align: justify;
+    color: var(--text-dark);
+}
+
+.account-tab-links {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-top: 0.55em;
+}
+
+.account-tab-link {
+    display: flex;
+    flex-direction: column;
+    height: 2em;
+    margin-bottom: 2.5em;
+}
+
+.account-tab-link label:hover {
+    color: var(--indicator-fill);
+}
+
+.account-tab-link label {
+    display: flex;
+    align-items: center;
+    justify-content: justify;
+}
+
+.account-tab-link label .topic {
+    font-size: 1.5em;
+    font-weight: bolder;
+    cursor: pointer;
+}
+
+.account-tab-link label ion-icon {
+    font-size: 2em;
+    margin-right: 0.25em;
+    cursor: pointer;
+}
+
+.account-content > div {
+    display: none;
+}
+
+.account-content > div.activated {
+    display: block;
+}
+
+.address-info {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn-address-add,
+.btn-address-add-cancel,
+.btn-address-update-cancel,
+.btn-address-delete-cancel,
+.btn-account-update-cancel,
+#btn-address-add-submit,
+#btn-address-update-submit,
+#btn-address-delete-submit,
+#btn-account-update-submit,
+.popup-close-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 1.5em;
+    width: 5rem;
+    font-size: 0.9em;
+    font-weight: normal;
+    cursor: pointer;
+    background-color: var(--bg-dark);
+    color: var(--text-light);
+    border: 0.125em solid var(--bg-dark);
+    border-radius: 0.3125em;
+    box-shadow: 0.125em 0.125em 0.125em 0.0625em var(--indicator-fill);
+    text-align: center;
+    line-height: 1.5em;
+    flex: 0 0 auto;
+    margin-bottom: 1rem;
+    padding: 0 0.25em;
+}
+
+.form-address-add,
+.form-address-update,
+.form-account-update {
+    background: var(--bg-light);
+    display: flex;
+    height: 100%;
+    width: 100%;
+    justify-content: left;
+    align-items: center;
+}
+
+.btn-address-add,
+.btn-address-add-cancel,
+.btn-address-update-cancel,
+.btn-address-delete-cancel,
+.form-address-add,
+.form-address-update,
+.form-address-delete,
+.u-add-id,
+.user-address-ship-value,
+.user-address-bill-value {
+    display: none;
+}
+
+.btn-address-add.active,
+.btn-address-add-cancel.active,
+.btn-address-update-cancel.active,
+.btn-address-delete-cancel.active,
+.form-address-add.active,
+.form-address-update.active,
+.form-address-delete.active {
+    display: block;
+}
+
+.btn-address-add:hover,
+.btn-address-add-cancel:hover,
+.btn-address-update-cancel:hover,
+.btn-address-delete-cancel:hover,
+.btn-account-update-cancel.hover,
+#btn-address-add-submit:hover,
+#btn-address-update-submit:hover,
+#btn-address-delete-submit:hover,
+#btn-account-update-submit:hover,
+.popup-close-btn:hover {
+    color: var(--indicator-fill);
+}
+
+.form-user {
+    width: 80%;
+}
+
+.form-user input[type='text'],
+.form-user input[type='checkbox'] {
+    margin-bottom: 0.1em;
+    padding: 0.25em 0.5em;
+    font-size: 0.9em;
+    border-radius: 0.3125em;
+    border: 0.125em solid var(--bg-dark);
+}
+
+.form-user input[type='text'] {
+    width: 100%;
+}
+
+.address-checks,
+.address-state-zip,
+.buttons-user {
+    display: flex;
+    justify-content: left;
+}
+
+.btn-address-add-cancel,
+.btn-address-update-cancel,
+.btn-address-delete-cancel,
+.btn-account-update-cancel {
+    margin-left: 0.5em;
+}
+
+#u_add_state,
+#u_add_zip {
+    width: calc(20% - 0.125em);
+}
+
+#u_add_state {
+    margin-right: 0.25em;
+}
+
+#u_add_zip {
+    margin-left: 0.25em;
+}
+
+input[type='checkbox'] {
+    margin-right: 0.5em;
+}
+
+input[type='checkbox']:last-of-type {
+    margin-left: 0.5em;
+}
+.popup-success {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--indicator-fill);
+    color: var(--text-light);
+    position: fixed;
+    bottom: 50%;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 10px;
+    border: 0.125em solid var(--bg-dark);
+    border-radius: 5px;
+    box-shadow: 0.125em 0.125em 0.125em 0.0625em var(--indicator-fill);
+    z-index: 9999;
+}
+
+.popup-error {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--warning);
+    color: var(--text-light);
+    position: fixed;
+    bottom: 50%;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 10px;
+    border: 0.125em solid var(--bg-dark);
+    border-radius: 5px;
+    box-shadow: 0.125em 0.125em 0.125em 0.0625em var(--bg-light);
+    z-index: 9999;
+}
+
+.popup-close-btn {
+    margin-top: 2em;
+    padding: 0.25em;
+}
+
+#popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* semi-transparent black */
+    z-index: 9998;
+}
+
+.user-address-list,
+.user-account-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.user-address-listing {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: auto;
+    width: 90%;
+    margin-bottom: 0.5em;
+}
+
+.user-address-listing:not(:first-of-type) {
+    margin-top: 0.5em;
+}
+
+.user-address-main {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 70%;
+    background-color: var(--bg-light);
+    border: 0.125em solid var(--bg-dark);
+    border-radius: 0.3125em;
+    box-shadow: 0.125em 0.125em 0.125em 0.0625em var(--indicator-fill);
+    padding: 0.25em;
+}
+
+.user-address-main-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    height: auto;
+    font-size: 0.8em;
+    font-weight: bold;
+    color: var(--text-dark);
+}
+
+.u-add-city-state-zip {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+}
+
+.u-add-city,
+.u-add-state,
+.u-add-zip {
+    margin-right: 0.25em;
+}
+
+.user-address-main-ship-bill,
+.user-address-edit-delete {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 20%;
+}
+
+.user-address-ship-icon,
+.user-address-bill-icon,
+.user-address-edit-icon,
+.user-address-delete-icon {
+    display: flex;
+    align-items: center;
+    font-size: 2em;
+}
+
+.user-address-ship-icon {
+    color: var(--text-blue);
+}
+
+.user-address-bill-icon {
+    color: var(--text-green);
+}
+
+.user-address-edit-icon {
+    color: var(--text-orange);
+    cursor: pointer;
+}
+
+.user-address-edit-icon:hover,
+.user-address-delete-icon:hover {
+    font-size: 2.25em;
+    border: 0.125em solid var(--bg-dark);
+    border-radius: 0.3125em;
+}
+
+.user-address-delete-icon {
+    color: var(--warning);
+    cursor: pointer;
+}

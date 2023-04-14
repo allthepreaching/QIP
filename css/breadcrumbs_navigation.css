@@ -1,0 +1,38 @@
+.breadcrumbs {
+  position: sticky;
+  top: 11.2em;
+  height: 0.9;
+  background-color: var(--bg-light);
+  width: 100%;
+  margin-bottom: 0.16667em;
+  z-index: 99;
+}
+
+.breadcrumbs a {
+  text-decoration: none;
+  color: var(--text-dark);
+  font-weight: 800;
+  text-shadow: 0.14em 0.14em 0.14em var(--indicator-fill);
+}
+
+.breadcrumbs a:first-child {
+  padding-left: 0.03em;
+}
+
+/* MEDIUM DEVICE STYLES */
+@media only screen and (max-width: 61.25em) {
+  .breadcrumbs {
+    position: sticky;
+    height: 2.2em;
+    top: 16.45em;
+  }
+}
+
+/* SMALL DEVICE STYLES */
+@media only screen and (max-width: 30em) {
+  .breadcrumbs {
+    position: sticky;
+    height: 2.2em;
+    top: 18.45em;
+  }
+}

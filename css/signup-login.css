@@ -1,0 +1,184 @@
+.hidden-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 6.25rem;
+}
+
+.holder {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    background: var(--bg-light);
+    border-radius: 0.625rem;
+    box-shadow: 0.3125rem 0.5rem 0.625rem var(--text-dark);
+    position: relative;
+    overflow: hidden;
+    width: 60rem;
+    max-width: 100%;
+    min-height: 31.25rem;
+    padding: 0.9375rem 0;
+}
+
+.hide-forms {
+    display: none;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.holder button {
+    border-radius: 1.25rem;
+    border: 0.0625rem solid var(--indicator-fill);
+    box-shadow: 0.125rem 0.125rem 0.5rem var(--text-dark);
+    background: var(--text-dark);
+    color: var(--text-light);
+    font-size: 0.75rem;
+    font-weight: bold;
+    padding: 0.75rem 2.8125rem;
+    margin-top: 0.625rem;
+    margin-bottom: 0.625rem;
+    letter-spacing: 0.0625rem;
+    cursor: pointer;
+}
+
+.holder button:hover {
+    color: var(--indicator-fill);
+}
+
+.holder button:active {
+    color: var(--indicator-fill);
+}
+
+.holder button:focus {
+    color: var(--indicator-fill);
+}
+
+.form-container form {
+    background: var(--bg-light);
+    display: flex;
+    flex-direction: column;
+    padding: 0 3.125rem;
+    height: 100%;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+#sign-up-container {
+    display: none;
+}
+
+.form-title {
+    font-size: 1rem;
+    text-align: center;
+    font-weight: bolder;
+    color: var(--text-dark);
+    text-shadow: 0.125rem 0.125rem 0.125rem var(--indicator-fill);
+    text-transform: uppercase;
+}
+
+.form-container input {
+    background: var(--indicator-fill);
+    border: none;
+    padding: 0.75rem 0.9375rem;
+    margin: 0.5rem 0;
+    width: 100%;
+}
+
+.form-container input::placeholder {
+    color: var(--text-dark);
+}
+
+.a-login-forgot-pwd {
+    color: var(--warning);
+    text-decoration: none;
+    font-weight: bold;
+    transition: transform 80ms ease-in;
+}
+
+.a-login-forgot-pwd:hover {
+    transform: scale(1.1);
+}
+
+.form-container button {
+    border-radius: 1.25rem;
+    border: 0.0625rem solid var(--indicator-fill);
+    box-shadow: 0.125rem 0.125rem 0.5rem var(--text-dark);
+    background: var(--text-dark);
+    color: var(--text-light);
+    font-size: 0.75rem;
+    font-weight: bold;
+    padding: 0.75rem 2.8125rem;
+    margin-top: 0.625rem;
+    letter-spacing: 0.0625rem;
+    text-transform: transform 0.08em ease-in;
+}
+
+.form-container button:hover {
+    transform: scale(1.1);
+    color: var(--indicator-fill);
+}
+
+.form-container button:active {
+    transform: scale(0.95);
+    color: var(--indicator-fill);
+}
+
+.form-container button:focus {
+    outline: none;
+    color: var(--indicator-fill);
+}
+
+.errors {
+    font-weight: bold;
+    color: var(--indicator-fill);
+}
+
+.thankyou-signup {
+    color: var(--text-dark);
+    width: 70%;
+    font-size: 1rem;
+    text-align: center;
+    font-weight: bolder;
+    text-shadow: 0.125rem 0.125rem 0.125rem var(--indicator-fill);
+    text-transform: uppercase;
+}
+
+/* MEDIUM SCREEN */
+@media (max-width: 790px) {
+    .h1-login {
+        font-size: 4rem;
+    }
+
+    .holder {
+        max-width: 18.75rem;
+        min-height: 18.75rem;
+    }
+}
+
+/* SMALL SCREENS */
+@media (max-width: 300px) {
+    .button-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .new-account,
+    .existing-account {
+        width: 20em;
+    }
+
+    .holder {
+        max-width: 15.75rem;
+        min-height: 18.75rem;
+    }
+}

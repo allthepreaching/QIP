@@ -1,0 +1,12 @@
+:root {
+    --bg-light: #f8f1f1;
+    --bg-medium: #e0e0e0;
+    --bg-dark: #222327;
+    --text-light: #f8f1f1;
+    --text-dark: #222327;
+    --text-green: #486750;
+    --text-blue: #536b87;
+    --text-orange: #fa9e07;
+    --indicator-fill: #8e99c7;
+    --warning: #ff3c00;
+}
