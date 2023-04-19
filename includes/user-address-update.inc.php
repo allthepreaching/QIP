@@ -10,6 +10,7 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 }
 
 include_once 'dbh-wamp.inc.php';
+
 session_start();
 
 // Sanitize and set variables for user input
@@ -50,19 +51,17 @@ if (empty($company) || empty($street1) || empty($city) || empty($state) || empty
 } else {
 
     // Check if $shipto is greater than 0
-    $stmt = null;
+    $stmt1 = null;
     if ($shipto > 0) {
 
         // Query user_address table to find all addresses where u_id is equal to $userId
-        $stmt = $conn->prepare("SELECT u_add_id, u_add_shipto FROM user_address WHERE u_id = ?");
-        $stmt->bind_param("i", $userId);
-        $stmt->execute();
+        $stmt1 = $conn->prepare("SELECT u_add_id, u_add_shipto FROM user_address WHERE u_id = ?");
+        $stmt1->bind_param("i", $userId);
+        $stmt1->execute();
+        $stmt1->bind_result($uAddId, $uAddShipto);
+        $stmt1->store_result();
 
-        // Bind result variables
-        $stmt->bind_result($uAddId, $uAddShipto);
-        $stmt->store_result();
-
-        while ($stmt->fetch()) {
+        while ($stmt1->fetch()) {
 
             // Check if u_add_shipto is greater than 0
             if ($uAddShipto > 0) {
@@ -80,19 +79,19 @@ if (empty($company) || empty($street1) || empty($city) || empty($state) || empty
     $uAddId = $_POST['u_add_id'];
 
     // Check if $billto is greater than 0
-    $stmt = null;
+    $stmt1 = null;
     if ($billto > 0) {
 
         // Query user_address table to find all addresses where u_id is equal to $userId
-        $stmt = $conn->prepare("SELECT u_add_id, u_add_billto FROM user_address WHERE u_id = ?");
-        $stmt->bind_param("i", $userId);
-        $stmt->execute();
+        $stmt1 = $conn->prepare("SELECT u_add_id, u_add_billto FROM user_address WHERE u_id = ?");
+        $stmt1->bind_param("i", $userId);
+        $stmt1->execute();
 
         // Bind result variables
-        $stmt->bind_result($uAddId, $uAddbillto);
-        $stmt->store_result();
+        $stmt1->bind_result($uAddId, $uAddbillto);
+        $stmt1->store_result();
 
-        while ($stmt->fetch()) {
+        while ($stmt1->fetch()) {
 
             // Check if u_add_billto is greater than 0
             if ($uAddbillto > 0) {
@@ -105,6 +104,7 @@ if (empty($company) || empty($street1) || empty($city) || empty($state) || empty
             }
         }
     }
+
     // set $uAdddId
     $uAddId = $_POST['u_add_id'];
 
@@ -125,4 +125,22 @@ if (empty($company) || empty($street1) || empty($city) || empty($state) || empty
     $stmt->close();
 }
 
+// set $uAddId
+$uAddId = $_POST['u_add_id'];
+
+// Query user_address table to count the number of addresses where u_id is equal to $userId
+$stmt1 = $conn->prepare("SELECT COUNT(u_add_id) FROM user_address WHERE u_id = ?");
+$stmt1->bind_param("i", $userId);
+$stmt1->execute();
+
+// Get the count of the addresses and set the billto and shipto if there is only one address
+$stmt1->bind_result($addressCount);
+$stmt1->store_result();
+
+if ($stmt1->fetch() && $addressCount == 1) {
+    $stmt2 = $conn->prepare("UPDATE user_address SET u_add_shipto = ?, u_add_billto = ? WHERE u_add_id = ?");
+    $temp = 1;
+    $stmt2->bind_param("iii", $temp, $temp, $uAddId);
+    $stmt2->execute();
+}
 mysqli_close($conn);

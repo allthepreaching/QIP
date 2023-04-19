@@ -37,36 +37,15 @@ const popupMessage = document.querySelector('.popup-message');
 const listElements = document.querySelectorAll('.list-element');
 if (popupMessage) {
     popupMessage.addEventListener('click', (event) => {
-        const clickedId = event.target.id;
         const addressTab = document.getElementById('address-tab-id');
         const addressContent = document.getElementById('address-tab');
         const popupOverlay = document.getElementById('popup-overlay');
-        if (
-            event.target.classList.contains('popup-success') ||
-            event.target.classList.contains('popup-success-btn')
-        ) {
-            for (let element of listElements) {
-                if (element.id !== clickedId) {
-                    element.classList.remove('activated');
-                }
-            }
-            addressTab.classList.add('activated');
-            addressContent.classList.add('activated');
-            popupOverlay.style.backgroundColor = 'var(--bg-light)';
-            popupOverlay.style.zIndex = '0';
-        } else {
-            for (let element of listElements) {
-                if (element.id !== clickedId) {
-                    element.classList.remove('activated');
-                }
-            }
-            addressTab.classList.add('activated');
-            addressContent.classList.add('activated');
-            formAddressAdd.classList.toggle('active');
-            btnAddressAdd.classList.toggle('active');
-            btnAddressAddCancel.classList.toggle('active');
-            popupOverlay.style.backgroundColor = 'var(--bg-light)';
-            popupOverlay.style.zIndex = '0';
+        for (let element of listElements) {
+            element.classList.remove('activated');
         }
+        addressTab.classList.add('activated');
+        addressContent.classList.add('activated');
+        popupOverlay.style.backgroundColor = 'var(--bg-light)';
+        popupOverlay.style.zIndex = '0';
     });
 }

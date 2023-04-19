@@ -179,6 +179,11 @@
     padding: 0 0.25em;
 }
 
+#btn-address-delete-submit {
+    background-color: var(--warning);
+    color: var(--text-light);
+}
+
 .form-address-add,
 .form-address-update,
 .form-account-update {
@@ -241,6 +246,24 @@
 
 .form-user input[type='text'] {
     width: 100%;
+}
+
+.form-user-delete input[type='text'] {
+    font-weight: bolder;
+    background: var(--bg-dark);
+    color: var(--text-light);
+    border: 2px solid var(--indicator-fill);
+}
+
+.form-address-delete-message {
+    width: 80%;
+    font-weight: bolder;
+    background: var(--notice);
+    color: var(--text-dark);
+    border: 2px solid var(--indicator-fill);
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: 0.25em;
 }
 
 .address-checks,
@@ -336,10 +359,11 @@ input[type='checkbox']:last-of-type {
 
 .user-address-listing {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    align-items: left;
     height: auto;
-    width: 90%;
+    width: 100%;
     margin-bottom: 0.5em;
 }
 
@@ -347,11 +371,20 @@ input[type='checkbox']:last-of-type {
     margin-top: 0.5em;
 }
 
+.user-address-listing-data {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: auto;
+    width: 100%;
+    margin-bottom: 0.5em;
+}
+
 .user-address-main {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 70%;
+    width: 80%;
     background-color: var(--bg-light);
     border: 0.125em solid var(--bg-dark);
     border-radius: 0.3125em;
@@ -362,8 +395,7 @@ input[type='checkbox']:last-of-type {
 .user-address-main-info {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
+    text-align: left;
     height: auto;
     font-size: 0.8em;
     font-weight: bold;
@@ -385,7 +417,7 @@ input[type='checkbox']:last-of-type {
 .user-address-main-ship-bill,
 .user-address-edit-delete {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
     width: 20%;
 }

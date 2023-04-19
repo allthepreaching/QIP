@@ -12,6 +12,7 @@ btnAddressUpdateCancel.addEventListener('click', () => {
     formAddressUpdate.classList.toggle('active');
     btnAddressUpdateSubmit.classList.toggle('active');
     btnAddressUpdateCancel.classList.toggle('active');
+    btnAddressAdd.classList.toggle('active');
 });
 
 btnAddressUpdateSubmit.addEventListener('click', () => {
@@ -31,10 +32,12 @@ function handleEditClick(event) {
         formAddressUpdate.classList.toggle('active');
         btnAddressUpdateSubmit.classList.toggle('active');
         btnAddressUpdateCancel.classList.toggle('active');
+        if (btnAddressAdd.classList.contains('active')) {
+            btnAddressAdd.classList.toggle('active');
+        }
     }
     if (formAddressAdd.classList.contains('active')) {
         formAddressAdd.classList.toggle('active');
-        btnAddressAdd.classList.toggle('active');
         btnAddressAddCancel.classList.toggle('active');
     }
     if (formAddressDelete.classList.contains('active')) {

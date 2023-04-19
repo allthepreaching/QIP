@@ -59,7 +59,7 @@ $_SESSION['total_items'] = $total_items;
     <!-- FAVICON END -->
 
     <!-- BASE HREF START -->
-    <base href="http://192.168.0.171/!Quality/QIP/">
+    <base href="http://192.168.0.171/!QIP/QIP/">
     <!-- BASE HREF END -->
 
     <!-- CSS START -->

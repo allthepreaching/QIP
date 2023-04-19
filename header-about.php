@@ -8,7 +8,7 @@ if (!isset($_SESSION['cart'])) {
     $_SESSION['cart'] = array();
 }
 
-// Loop through the cart and calculate the total cost of the cart:
+// Loop through the cart and calculate the total cost of the cart
 $cart_total = 0;
 foreach ($_SESSION['cart'] as $item) {
     $cart_total += $item['price'] * $item['qty'];
@@ -60,7 +60,7 @@ $_SESSION['total_items'] = $total_items;
     <!-- FAVICON END -->
 
     <!-- BASE HREF START -->
-    <base href="http://192.168.0.171/!Quality/QIP/">
+    <base href="http://192.168.0.171/!QIP/QIP/">
     <!-- BASE HREF END -->
 
     <!-- CSS START -->
