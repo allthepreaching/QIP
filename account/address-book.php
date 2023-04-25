@@ -126,13 +126,13 @@
             // main ship bill start
             echo '<div class = "user-address-main-ship-bill">';
             if ($row["u_add_shipto"] > 0) {
-                echo '<div class = "user-address-ship-icon"><ion-icon name="car"></ion-icon>' . $divClose;
+                echo '<div class = "user-address-ship-icon" title = "This is the default shipping address."><ion-icon name="car"></ion-icon>' . $divClose;
                 echo '<div class = "user-address-ship-value">' . $row["u_add_shipto"] . $divClose;
             } else {
                 echo '<div class = "user-address-ship-value">' . $row["u_add_shipto"] . $divClose;
             }
             if ($row["u_add_billto"] > 0) {
-                echo '<div class = "user-address-bill-icon"><ion-icon name="cash"></ion-icon>' . $divClose;
+                echo '<div class = "user-address-bill-icon" title = "This is the default billing address."><ion-icon name="cash"></ion-icon>' . $divClose;
                 echo '<div class = "user-address-bill-value">' . $row["u_add_billto"] . $divClose;
             } else {
                 echo '<div class = "user-address-bill-value">' . $row["u_add_billto"] . $divClose;
