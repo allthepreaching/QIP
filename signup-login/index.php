@@ -1,4 +1,4 @@
-<?php include_once '../header-account.php'; ?>
+<?php include_once '../header-signup-login.php'; ?>
 
 <script>
     BcrumbsNavUtil.bcrumbsNav("loginregister", "Log In / Register");

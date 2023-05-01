@@ -1,5 +1,12 @@
 <?php
 
+$url = '../signup-login/';
+
+// Redirect user to error page if request method is not POST
+if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+    header("Location: $url");
+    exit();
+}
 include_once 'dbh-wamp.inc.php';
 
 // Check if the form has been submitted
@@ -42,15 +49,16 @@ if (isset($_POST['submitSignup'])) {
   $u_pwd = password_hash($pwd, PASSWORD_DEFAULT);
 
   // check if the username already exists
-  $stmt = mysqli_prepare($conn, "SELECT * FROM user WHERE u_name = ?");
-  mysqli_stmt_bind_param($stmt, "s", $username);
-  mysqli_stmt_execute($stmt);
+  $stmt = $conn->prepare("SELECT * FROM user WHERE u_name = ?");
+  $stmt->bind_param("s", $username);
+  $stmt->execute();
+  $stmt->store_result();
 
   // bind the results of the query to variables
-  mysqli_stmt_bind_result($stmt, $u_id, $u_name, $u_pwd, $u_email, $created, $modified);
-  mysqli_stmt_fetch($stmt);
+  $stmt->bind_result($u_id, $u_name, $u_pwd, $u_email, $created, $modified);
+  $stmt->fetch();
 
-  if (mysqli_stmt_num_rows($stmt) > 0) {
+  if ($stmt->num_rows() > 0) {
 
     // display an error message if the username already exists
     echo "Username already exists.";
@@ -58,11 +66,16 @@ if (isset($_POST['submitSignup'])) {
   }
 
   // insert the user's information into the database
-  $stmt = mysqli_prepare($conn, "INSERT INTO user (u_name, u_pwd, u_email) VALUES (?, ?, ?)");
-  mysqli_stmt_bind_param($stmt, "sss", $username, $u_pwd, $email);
-  mysqli_stmt_execute($stmt);
+  $stmt2 = $conn->prepare("INSERT INTO user (u_name, u_pwd, u_email) VALUES (?, ?, ?)");
+  $stmt2->bind_param("sss", $username, $u_pwd, $email);
+  $stmt2->execute();
+  $stmt2->store_result();
 
   // redirect the user to the thankyou-signup page
   header("Location: ../thankyou-signup/");
   exit;
 }
+
+// Close statement objects
+$stmt->close();
+$stmt2->close();

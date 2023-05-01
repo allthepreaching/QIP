@@ -1,5 +1,7 @@
 <?php
 
+$url = '../account/';
+
 // Redirect user to error page if request method is not POST
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     header("Location: $url");
@@ -8,7 +10,6 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 
 include_once 'dbh-wamp.inc.php';
 
-$url = '../account/';
 
 session_start();
 
