@@ -1,7 +1,7 @@
 <?php
 
 include_once '../header-account.php';
-
+include_once '../includes/ship-bill-check.inc.php';
 
 if (isset($_SESSION['address_success'])) {
     $address_success = $_SESSION['address_success'];

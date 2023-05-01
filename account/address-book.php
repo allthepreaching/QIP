@@ -1,9 +1,13 @@
-<?php $userId = $_SESSION['userid']; ?>
+<?php
+
+$userId = $_SESSION['userid'];
+
+?>
 
 <div class="btn-address-add active">Add New</div>
 <div class="form-address-add">
     <form class="form-user" action="includes/user-address-add.inc.php" method="post">
-        <input type="text" id="u_add_company" name="u_add_company" placeholder="Company Name">
+        <input type="text" id="u_add_company" name="u_add_company" placeholder="Name or Company Name">
         <br>
         <input type="text" id="u_add_street1" name="u_add_street1" placeholder="Street 1">
         <br>
@@ -33,7 +37,7 @@
 <div class="form-address-update">
     <form class="form-user" action="includes/user-address-update.inc.php" method="post">
         <input type="hidden" id="u_add_id" name="u_add_id">
-        <input type="text" id="u_add_company" name="u_add_company" placeholder="Company Name">
+        <input type="text" id="u_add_company" name="u_add_company" placeholder="Name or Company Name">
         <br>
         <input type="text" id="u_add_street1" name="u_add_street1" placeholder="Street 1">
         <br>
@@ -66,7 +70,7 @@
     </div>
     <form class="form-user form-user-delete" action="includes/user-address-delete.inc.php" method="post">
         <input type="hidden" id="u_add_id" name="u_add_id">
-        <input type="text" disabled id="u_add_company" name="u_add_company" placeholder="Company Name">
+        <input type="text" disabled id="u_add_company" name="u_add_company" placeholder="Name or Company Name">
         <br>
         <input type="text" disabled id="u_add_street1" name="u_add_street1" placeholder="Street 1">
         <br>
