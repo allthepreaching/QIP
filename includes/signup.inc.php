@@ -4,10 +4,12 @@ $url = '../signup-login/';
 
 // Redirect user to error page if request method is not POST
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-    header("Location: $url");
-    exit();
+  header("Location: $url");
+  exit();
 }
 include_once 'dbh-wamp.inc.php';
+
+session_start();
 
 // Check if the form has been submitted
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -41,7 +43,9 @@ if (isset($_POST['submitSignup'])) {
   if ($pwd != $pwd2) {
 
     // display an error message if the passwords don't match
-    echo "Passwords don't match.";
+    $_SESSION['signup_success'] = false;
+    $_SESSION['signup_message'] = 'Passwords do not match.';
+    header("Location: $url");
     exit;
   }
 
@@ -49,8 +53,8 @@ if (isset($_POST['submitSignup'])) {
   $u_pwd = password_hash($pwd, PASSWORD_DEFAULT);
 
   // check if the username already exists
-  $stmt = $conn->prepare("SELECT * FROM user WHERE u_name = ?");
-  $stmt->bind_param("s", $username);
+  $stmt = $conn->prepare("SELECT * FROM user WHERE u_name = ? OR u_email = ?");
+  $stmt->bind_param("ss", $username, $email);
   $stmt->execute();
   $stmt->store_result();
 
@@ -61,19 +65,20 @@ if (isset($_POST['submitSignup'])) {
   if ($stmt->num_rows() > 0) {
 
     // display an error message if the username already exists
-    echo "Username already exists.";
-    exit;
+    $_SESSION['signup_success'] = false;
+    $_SESSION['signup_message'] = 'Username or Email already exists.';
+    header("Location: $url");
+  } else {
+
+    // insert the user's information into the database
+    $stmt2 = $conn->prepare("INSERT INTO user (u_name, u_pwd, u_email) VALUES (?, ?, ?)");
+    $stmt2->bind_param("sss", $username, $u_pwd, $email);
+    $stmt2->execute();
+    $stmt2->store_result();
+
+    // redirect the user to the thankyou-signup page
+    header("Location: ../thankyou-signup/");
   }
-
-  // insert the user's information into the database
-  $stmt2 = $conn->prepare("INSERT INTO user (u_name, u_pwd, u_email) VALUES (?, ?, ?)");
-  $stmt2->bind_param("sss", $username, $u_pwd, $email);
-  $stmt2->execute();
-  $stmt2->store_result();
-
-  // redirect the user to the thankyou-signup page
-  header("Location: ../thankyou-signup/");
-  exit;
 }
 
 // Close statement objects

@@ -72,6 +72,7 @@ $_SESSION['total_items'] = $total_items;
     <link rel="stylesheet" href="./css/pages.css">
     <link rel="stylesheet" href="./css/page-table.css">
     <link rel="stylesheet" href="./css/signup-login.css">
+    <link rel="stylesheet" href="./css/account.css">
     <!-- CSS END -->
 
     <!-- JS START -->

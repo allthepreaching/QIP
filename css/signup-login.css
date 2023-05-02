@@ -48,6 +48,10 @@
     cursor: pointer;
 }
 
+.holder #create-account-button {
+    margin-right: 1em;
+}
+
 .holder button:hover {
     color: var(--indicator-fill);
 }
@@ -91,6 +95,7 @@
     padding: 0.75rem 0.9375rem;
     margin: 0.5rem 0;
     width: 100%;
+    border-radius: 0.25em;
 }
 
 .form-container input::placeholder {
