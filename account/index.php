@@ -3,6 +3,7 @@
 include_once '../header-account.php';
 include_once '../includes/ship-bill-check.inc.php';
 
+// check for and / or set popup message variables
 if (isset($_SESSION['address_success'])) {
     $address_success = $_SESSION['address_success'];
 } else {
@@ -15,6 +16,8 @@ if (isset($_SESSION['address_message'])) {
 }
 
 ?>
+
+<!-- PAGE CONTENT START -->
 
 <script>
     BcrumbsNavUtil.bcrumbsNav("youraccount", " Your Account");
@@ -52,13 +55,13 @@ if (isset($_SESSION['address_message'])) {
         if (addressSuccess) {
 
             // set class for successful popup
-            popup.setAttribute('class', 'popup-success popup-message');
-            closeButton.setAttribute('class', 'popup-close-btn popup-message popup-success-btn');
+            popup.setAttribute('class', 'popup-success cart-popup-message');
+            closeButton.setAttribute('class', 'popup-close-btn cart-popup-message popup-success-btn');
         } else {
 
             // set class for error popup
-            popup.setAttribute('class', 'popup-error popup-message');
-            closeButton.setAttribute('class', 'popup-close-btn popup-message popup-error-btn');
+            popup.setAttribute('class', 'popup-error cart-popup-message');
+            closeButton.setAttribute('class', 'popup-close-btn cart-popup-message popup-error-btn');
         }
 
         // clear session variables

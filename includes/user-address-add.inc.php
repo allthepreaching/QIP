@@ -1,11 +1,11 @@
 <?php
 
-$url = '../account/';
+$url = 'Location: ../account/';
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 
     // Redirect user to error page
-    header("Location: $url");
+    header("$url");
     exit();
 }
 
@@ -47,7 +47,7 @@ $billto = isset($_POST['u_add_billto']) ? 1 : 0;
 if (empty($company) || empty($street1) || empty($city) || empty($state) || empty($zip)) {
     $_SESSION['address_success'] = false;
     $_SESSION['address_message'] = 'You must fill in all required fields.';
-    header("Location: $url");
+    header("$url");
 } else {
 
     // Check if address already exists in database
@@ -61,7 +61,7 @@ if (empty($company) || empty($street1) || empty($city) || empty($state) || empty
         // Address already exists, do not insert
         $_SESSION['address_success'] = false;
         $_SESSION['address_message'] = 'Address already exists.';
-        header("Location: $url");
+        header("$url");
     } else {
 
         // Check if $shipto is greater than 0
@@ -125,11 +125,11 @@ if (empty($company) || empty($street1) || empty($city) || empty($state) || empty
         if ($stmt->execute()) {
             $_SESSION['address_success'] = true;
             $_SESSION['address_message'] = 'Success: Address added successfully.';
-            header("Location: $url");
+            header("$url");
         } else {
             $_SESSION['address_success'] = false;
             $_SESSION['address_message'] = 'An error occurred.';
-            header("Location: $url");
+            header("$url");
         }
         $stmt->close();
     }

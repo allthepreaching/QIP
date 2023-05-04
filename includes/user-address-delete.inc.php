@@ -1,11 +1,11 @@
 <?php
 
-$url = '../account/';
+$url = 'Location: ../account/';
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 
     // Redirect user to error page
-    header("Location: $url");
+    header("$url");
     exit();
 }
 
@@ -21,7 +21,7 @@ $uAddId = $_POST['u_add_id'];
 if (empty($uAddId)) {
     $_SESSION['address_success'] = false;
     $_SESSION['address_message'] = 'An error occurred.';
-    header("Location: $url");
+    header("$url");
 } elseif (!empty($uAddId)) {
 
     // Query user_address table to count the number of addresses where u_id is equal to $userId
@@ -38,7 +38,7 @@ if (empty($uAddId)) {
     if ($addressCount == 1) {
         $_SESSION['address_success'] = false;
         $_SESSION['address_message'] = 'You cannot delete the only address in your account.';
-        header("Location: $url");
+        header("$url");
     } else {
 
         // Query user_address table to delete address where u_add_id is equal to $uAddId
@@ -49,11 +49,11 @@ if (empty($uAddId)) {
         if ($stmt->execute()) {
             $_SESSION['address_success'] = true;
             $_SESSION['address_message'] = 'Success: Address deleted successfully.';
-            header("Location: $url");
+            header("$url");
         } else {
             $_SESSION['address_success'] = false;
             $_SESSION['address_message'] = 'An error occurred.';
-            header("Location: $url");
+            header("$url");
         }
         $stmt->close();
     }

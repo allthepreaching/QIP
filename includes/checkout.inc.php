@@ -1,4 +1,5 @@
 <?php
+
 include_once 'dbh-wamp.inc.php';
 require_once '../vendor/autoload.php';
 require_once('../fpdf/fpdf.php');
@@ -49,14 +50,20 @@ $_SESSION['sub_total'] = 0;
 $_SESSION['sales_tax'] = 0;
 $_SESSION['order_total'] = 0;
 
-$_SESSION['page_num'] = 1; // Initialize page number
-$_SESSION['page_total'] = 1; // Initialize page number
+// cart url redirect
+$urlCart = 'Location: ../cart/';
 
-// Check if the cart is empty
+// Initialize page number
+$_SESSION['page_num'] = 1;
+
+// Initialize page number
+$_SESSION['page_total'] = 1;
+
+// if the cart is empty Redirect to cart page
 if (empty($_SESSION['cart'])) {
-
-    // Redirect to cart page if cart is empty
-    header('Location: ../cart/');
+    $_SESSION['cart_success'] = false;
+    $_SESSION['cart_message'] = 'Your cart is empty.';
+    header($urlCart);
     exit();
 } else {
 
