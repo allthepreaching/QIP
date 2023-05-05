@@ -4,10 +4,6 @@ include_once 'includes/dbh-wamp.inc.php';
 
 session_start();
 
-if (!isset($_SESSION['cart'])) {
-    $_SESSION['cart'] = array();
-}
-
 // Loop through the cart and calculate the total cost of the cart:
 $cart_total = 0;
 foreach ($_SESSION['cart'] as $item) {
@@ -82,7 +78,7 @@ $_SESSION['total_items'] = $total_items;
     <!-- JS START -->
     <script defer src="./js/navbar.js"></script>
     <script defer src="./js/categories-home.js"></script>
-    <script defer src="./js/cart-popups.js"></script>
+    <script defer src="./js/checkout-popups.js"></script>
     <script src="./js/breadcrumbs_navigation.js"></script>
     <!-- JS END -->
 

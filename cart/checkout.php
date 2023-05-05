@@ -1,6 +1,6 @@
 <?php
 
-include_once '../header-cart.php';
+include_once '../header-checkout.php';
 
 // check for and / or set popup message variables
 if (isset($_SESSION['cart_success'])) {
@@ -19,13 +19,13 @@ if (isset($_SESSION['cart_message'])) {
 <!-- PAGE CONTENT START -->
 
 <script>
-    BcrumbsNavUtil.bcrumbsNav("cart", "Shopping Cart");
+    BcrumbsNavUtil.bcrumbsNav("cart", "Shopping Cart", "checkout", " Checkout");
 
     // check for session variables
     var cartSuccess = <?php echo json_encode($cart_success); ?>;
     var cartMessage = <?php echo json_encode($cart_message); ?>;
     if (cartSuccess != null && cartMessage != null) {
-        console.log(cartMessage, cartSuccess);
+
         // create overlay
         var overlay = document.createElement('div');
         overlay.setAttribute('id', 'popup-overlay');
@@ -73,23 +73,23 @@ if (isset($_SESSION['cart_message'])) {
 <div class="page-container">
     <div class="page-header-container">
         <div class="page-header-title">
-            shopping cart
+            confirm checkout
         </div>
     </div>
-    <div class="clear-checkout-container">
-        <a href="./includes/clear-cart.inc.php">
-            <div class="clear-cart">
-                Clear Cart
+    <div class="confirm-checkout-container">
+        <a href="./cart/index.php">
+            <div class="modify-cart">
+                Modify Cart
             </div>
         </a>
-        <a href="./includes/checkout.inc.php">
-            <div class="checkout">
-                Checkout
+        <a href="./includes/checkout-confirm.inc.php">
+            <div class="checkout-confirm">
+                Submit Order
             </div>
         </a>
     </div>
     <div class="page-table-container">
-        <table class="fl-table" id="cart-table" role="none">
+        <table class="fl-table" id="checkout-table" role="none">
             <thead>
                 <tr>
                     <th>Code</th>
@@ -97,7 +97,6 @@ if (isset($_SESSION['cart_message'])) {
                     <th>Quantity</th>
                     <th>Price</th>
                     <th>Ext. Price</th>
-                    <th> X </th>
                 </tr>
             </thead>
             <tbody>
@@ -120,22 +119,13 @@ if (isset($_SESSION['cart_message'])) {
                         // Calculate the line total for this item
                         $line_total = $item['qty'] * $item['price'];
 
-                        // Display the item and allow quantity adjustment
+                        // Display the item
                         echo '<tr>';
                         echo '<td>' . $item['code'] . $tdClose;
                         echo '<td>' . $item['desc'] . $tdClose;
-                        echo "<td><form id='cart-qty' action='./includes/update-cart.inc.php' method='post'>
-                              <input type='hidden' name='itemKey' value='" . $itemKey . "'>
-                              <input type='number' id='qty' name='qty' value='" . $item['qty'] . "' min='1' inputmode='numeric'>
-
-                              <input type='submit' id='update-cart-qty' value='Update'>
-                              </form></td>";
+                        echo '<td>' . $item['qty'] . $tdClose;
                         echo '<td>' . $item['price'] . $tdClose;
                         echo '<td>' . $line_total . $tdClose;
-                        echo "<td><form method='post' action='./includes/remove-item.inc.php'>
-                                 <input type='hidden' name='itemKey' value='" . $itemKey . "'>
-                                 <button id='remove-link' type='submit'><ion-icon id='remove-button' name='close-circle'></ion-icon></button>
-                                 </form></td>";
                         echo '</tr>';
                     }
                 }

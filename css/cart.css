@@ -1,4 +1,5 @@
 .clear-checkout-container,
+.confirm-checkout-container,
 .print-email-container,
 .login-container {
     width: 100%;
@@ -12,7 +13,9 @@
 }
 
 .checkout,
+.checkout-confirm,
 .clear-cart,
+.modify-cart,
 .print-conf,
 .email-conf,
 .login-after-signup {
