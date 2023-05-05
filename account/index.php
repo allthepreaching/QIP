@@ -55,13 +55,13 @@ if (isset($_SESSION['address_message'])) {
         if (addressSuccess) {
 
             // set class for successful popup
-            popup.setAttribute('class', 'popup-success cart-popup-message');
-            closeButton.setAttribute('class', 'popup-close-btn cart-popup-message popup-success-btn');
+            popup.setAttribute('class', 'popup-success popup-message');
+            closeButton.setAttribute('class', 'popup-close-btn popup-message popup-success-btn');
         } else {
 
             // set class for error popup
-            popup.setAttribute('class', 'popup-error cart-popup-message');
-            closeButton.setAttribute('class', 'popup-close-btn cart-popup-message popup-error-btn');
+            popup.setAttribute('class', 'popup-error popup-message');
+            closeButton.setAttribute('class', 'popup-close-btn popup-message popup-error-btn');
         }
 
         // clear session variables

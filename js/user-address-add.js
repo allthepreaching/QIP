@@ -46,6 +46,6 @@ if (popupMessage) {
         addressTab.classList.add('activated');
         addressContent.classList.add('activated');
         popupOverlay.style.backgroundColor = 'var(--bg-light)';
-        popupOverlay.style.zIndex = '0';
+        popupOverlay.style.zIndex = '-10';
     });
 }
