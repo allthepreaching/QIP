@@ -5,7 +5,11 @@
                 <a class="items-total" href="./cart/">
                     <ion-icon id="cart-icon" name="cart"></ion-icon>
                     <?php
-                    echo '<span class="cart-items">' . $_SESSION['total_items'] . ' Items</span> ';
+                    if ($_SESSION['total_items'] > 1 || $_SESSION['total_items'] < 1) {
+                        echo '<span class="cart-items">' . $_SESSION['total_items'] . ' Items</span> ';
+                    } else {
+                        echo '<span class="cart-items">' . $_SESSION['total_items'] . ' Item</span> ';
+                    }
                     ?>
                 </a>
             </div>
@@ -25,7 +29,7 @@
             </a>
             <a id="express-link" href="./express/">
                 <div class="express">
-                    Express Add
+                    Express
                 </div>
             </a>
             <?php

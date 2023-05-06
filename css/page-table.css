@@ -145,6 +145,41 @@ input[type='number']::-webkit-outer-spin-button {
     border-radius: 0.3125rem;
 }
 
+#sub-tax-frt-total {
+    width: 30%;
+    left: 52em;
+}
+
+#sub-tax-frt-total td {
+    border: 0.0625rem solid var(--bg-dark);
+}
+
+#sub-tax-frt-total .tdDark {
+    color: var(--text-light);
+    font-weight: bolder;
+    font-size: 1.25em;
+    background: var(--bg-dark);
+    border: 0.15rem solid var(--indicator-fill);
+    z-index: 99;
+}
+
+#sub-tax-frt-total .tdLight {
+    color: var(--text-dark);
+    font-weight: bolder;
+    font-size: 1.25em;
+    background: var(--bg-light);
+    border: 0.15rem solid var(--indicator-fill);
+    z-index: 99;
+}
+#sub-tax-frt-total .tdTotal {
+    color: var(--text-dark);
+    font-weight: bolder;
+    font-size: 1.35em;
+    background: var(--notice);
+    border: 0.15rem solid var(--indicator-fill);
+    z-index: 99;
+}
+
 /* Responsive */
 
 @media (max-width: 767px) {
@@ -157,9 +192,9 @@ input[type='number']::-webkit-outer-spin-button {
         content: 'Scroll horizontally >';
         display: block;
         text-align: right;
-        font-size: 0.6875rem; /* 11px converted to rem */
+        font-size: 0.6875rem;
         color: var(--text-light);
-        padding: 0 0 1.5625em; /* 10px converted to em */
+        padding: 0 0 1.5625em;
     }
     .fl-table thead,
     .fl-table tbody,
@@ -179,19 +214,19 @@ input[type='number']::-webkit-outer-spin-button {
     }
     .fl-table td,
     .fl-table th {
-        padding: 0.625em 0.625em 0.625em 0.625em; /* 10px converted to em */
-        height: 2.1875rem; /* 35px converted to rem */
+        padding: 0.625em 0.625em 0.625em 0.625em;
+        height: 2.1875rem;
         vertical-align: middle;
         box-sizing: border-box;
         overflow-x: hidden;
         overflow-y: auto;
-        width: 7.5rem; /* 120px converted to rem */
-        font-size: 0.6875rem; /* 11px converted to rem */
+        width: 7.5rem;
+        font-size: 0.6875rem;
         text-overflow: ellipsis;
     }
     .fl-table thead th {
         text-align: left;
-        border-bottom: 0.0625rem solid var(--bg-light); /* 1px converted to rem */
+        border-bottom: 0.0625rem solid var(--bg-light);
     }
     .fl-table tbody tr {
         display: table-cell;
@@ -203,7 +238,7 @@ input[type='number']::-webkit-outer-spin-button {
         background: var(--bg-light);
     }
     .fl-table tr td {
-        border-right: 0.125rem solid var(--bg-dark); /* 2px converted to rem */
+        border-right: 0.125rem solid var(--bg-dark);
     }
     .fl-table tbody td {
         display: block;

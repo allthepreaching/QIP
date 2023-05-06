@@ -1,6 +1,7 @@
 <?php
 
 include_once 'dbh-wamp.inc.php';
+include_once 'config.php';
 require_once '../vendor/autoload.php';
 require_once('../fpdf/fpdf.php');
 require_once('../fpdf/drawHeader.php');
@@ -15,6 +16,9 @@ use PHPMailer\PHPMailer\SMTP;
 use PhpOffice\PhpSpreadsheet\IOFactory;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;
+
+$smtp_password = SMTP_PASSWORD;
+$smtp_username = SMTP_USERNAME;
 
 $_SESSION['company_name'] = 'Northeast Pressure Vessel Testing';
 $_SESSION['billto_name'] = 'Northeast Pressure Vessel Testing';
@@ -40,15 +44,6 @@ $_SESSION['order_number'] = 123456;
 $_SESSION['salesperson'] = 'House';
 $_SESSION['payment_terms'] = '2%10NET30';
 
-$_SESSION['tracking'] = ['1ZW1X4056587416859456852', '1ZW1X4056577416859456852', '1ZW1X4956587416859456852'];
-$_SESSION['ship_via'] = 'UPSGND';
-$_SESSION['packages'] = 3;
-$_SESSION['order_weight'] = 44;
-$_SESSION['freight'] = 10;
-$_SESSION['taxable'] = true;
-$_SESSION['sub_total'] = 0;
-$_SESSION['sales_tax'] = 0;
-$_SESSION['order_total'] = 0;
 
 // cart url redirect
 $urlCart = 'Location: ../cart/';
@@ -181,15 +176,9 @@ foreach ($cart as $item) {
     $pdf->SetXY(180, $pdf->GetY());
     $pdf->Cell(20, $cell_height, number_format($line_total, 2), $border, 1, 'C', true);
 
-    $row_num++; // Increment row number
-    $_SESSION['sub_total'] += $line_total;
+    // Increment row number
+    $row_num++;
 }
-if (!$_SESSION['taxable'] === true) {
-    $_SESSION['sales_tax'] = 0;
-} else {
-    $_SESSION['sales_tax'] = $_SESSION['sub_total'] * 0.0625;
-}
-$_SESSION['order_total'] = ($_SESSION['sub_total'] + $_SESSION['sales_tax'] + $_SESSION['freight']);
 
 drawFooter($pdf); // Add table footer rows
 
@@ -216,8 +205,6 @@ $headers .= "Content-Type: multipart/mixed; boundary=\"boundary\"\r\n";
 // SSL/TLS configuration
 $smtp_host = 'smtp.gmail.com';
 $smtp_port = 587;
-$smtp_username = 'phynalcams@gmail.com';
-$smtp_password = 'gttufdxzadqylchn';
 
 // Set the mailer settings
 $mail = new PHPMailer;
@@ -241,9 +228,9 @@ $mail->addAttachment($filename_csv, 'Order_' . $_SESSION['order_number']);
 
 // Send the email
 if ($mail->send()) {
-    echo "Email sent successfully to $to";
+    var_dump("Email sent successfully to $to");
 } else {
-    echo "Failed to send email to $to";
+    var_dump("Failed to send email to $to");
 }
 
 // Send email to user
@@ -263,8 +250,6 @@ $headers .= "Content-Type: multipart/mixed; boundary=\"boundary\"\r\n";
 // SSL/TLS configuration
 $smtp_host = 'smtp.gmail.com';
 $smtp_port = 587;
-$smtp_username = 'phynalcams@gmail.com';
-$smtp_password = 'gttufdxzadqylchn';
 
 // Set the mailer settings
 $mail = new PHPMailer;
@@ -288,9 +273,9 @@ $mail->addAttachment($filename_pdf, 'Order_' . $_SESSION['order_number']);
 
 // Send the email
 if ($mail->send()) {
-    echo "Email sent successfully to $to";
+    var_dump("Email sent successfully to $to");
 } else {
-    echo "Failed to send email to $to";
+    var_dump("Failed to send email to $to");
 }
 
 // Clear the cart

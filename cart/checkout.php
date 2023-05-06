@@ -14,6 +14,16 @@ if (isset($_SESSION['cart_message'])) {
     $cart_message = null;
 }
 
+$_SESSION['tracking'] = ['1ZW1X4056587416859456852', '1ZW1X4056577416859456852', '1ZW1X4956587416859456852'];
+$_SESSION['ship_via'] = 'UPSGND';
+$_SESSION['packages'] = 3;
+$_SESSION['order_weight'] = 44;
+$_SESSION['freight'] = 10;
+$_SESSION['taxable'] = true;
+$_SESSION['sub_total'] = 0;
+$_SESSION['sales_tax'] = 0;
+$_SESSION['order_total'] = 0;
+
 ?>
 
 <!-- PAGE CONTENT START -->
@@ -102,8 +112,11 @@ if (isset($_SESSION['cart_message'])) {
             <tbody>
                 <?php
 
-                // </td> variable
+                // variables
                 $tdClose = '</td>';
+                $trClose = '</tr>';
+                $tdLight = '<td class = "tdLight">';
+                $subTotal = 0;
 
                 // Check if the cart is empty
                 if (empty($_SESSION['cart'])) {
@@ -127,10 +140,29 @@ if (isset($_SESSION['cart_message'])) {
                         echo '<td>' . $item['price'] . $tdClose;
                         echo '<td>' . $line_total . $tdClose;
                         echo '</tr>';
+                        $_SESSION['sub_total'] += $line_total;
                     }
                 }
+                if (!$_SESSION['taxable'] === true) {
+                    $_SESSION['sales_tax'] = 0;
+                } else {
+                    $_SESSION['sales_tax'] = $_SESSION['sub_total'] * 0.0625;
+                }
+                $_SESSION['order_total'] = ($_SESSION['sub_total'] + $_SESSION['sales_tax'] + $_SESSION['freight']);
                 ?>
             <tbody>
+        </table>
+        <table class="fl-table" id="sub-tax-frt-total" role="none">
+            <?php
+
+            // show subtotal tax freight total
+            echo '<tr><td class = "tdDark">Sub-Total' . $tdClose . $tdLight . '$' . number_format($_SESSION['sub_total'], 2) . $tdClose . $trClose;
+            echo '<tr><td class = "tdDark">Tax' . $tdClose . $tdLight . '$' . number_format($_SESSION['sales_tax'], 2) . $tdClose . $trClose;
+            echo '<tr><td class = "tdDark">Freight' . $tdClose . $tdLight . '$' . number_format($_SESSION['freight'], 2) . $tdClose . $trClose;
+            echo '<tr><td class = "tdTotal">Total' . $tdClose . '<td class = "tdTotal">' . '$' . number_format($_SESSION['order_total'], 2) . $tdClose . $trClose;
+
+            ?>
+            </tr>
         </table>
     </div>
 </div>

@@ -21,6 +21,7 @@ dbh-gd.inc.php
 dbh-gd.php
 dbh.inc.php
 /confirmations
+config.php
 
 # Executables
 *.swf
