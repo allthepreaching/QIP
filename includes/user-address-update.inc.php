@@ -10,7 +10,6 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 
 include_once 'dbh-wamp.inc.php';
 
-
 session_start();
 
 // Sanitize and set variables for user input

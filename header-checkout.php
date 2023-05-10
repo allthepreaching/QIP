@@ -70,15 +70,17 @@ $_SESSION['total_items'] = $total_items;
     <link rel="stylesheet" href="./css/pages-categories.css">
     <link rel="stylesheet" href="./css/pages.css">
     <link rel="stylesheet" href="./css/page-table.css">
-    <link rel="stylesheet" href="./css/cart.css">
     <link rel="stylesheet" href="./css/signup-login.css">
     <link rel="stylesheet" href="./css/account.css">
+    <link rel="stylesheet" href="./css/cart.css">
     <!-- CSS END -->
 
     <!-- JS START -->
     <script defer src="./js/navbar.js"></script>
     <script defer src="./js/categories-home.js"></script>
     <script defer src="./js/checkout-popups.js"></script>
+    <script defer src="./js/checkout-dropdown-billing.js"></script>
+    <script defer src="./js/checkout-dropdown-shipping.js"></script>
     <script src="./js/breadcrumbs_navigation.js"></script>
     <!-- JS END -->
 

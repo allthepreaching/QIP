@@ -86,6 +86,195 @@ $_SESSION['order_total'] = 0;
             confirm checkout
         </div>
     </div>
+    <div class="checkout-steps">
+        <div class="checkout-steps-list">
+            <div class="checkout-step checkout-step-one">
+                <div class="checkout-step-header">
+                    <div class="header-arrow-container-billing active">
+                        <span class="span-header-arrow-billing"><ion-icon name="arrow-dropright-circle"></ion-icon></span>
+                    </div>
+                    <div class="header-check-container-billing">
+                        <span class="span-header-check-billing"><ion-icon name="checkmark-circle"></ion-icon></span>
+                    </div>
+                    <span class="span-header-billing">billing information</span>
+                    <div class="header-edit-container-billing">
+                        <span class="span-header-edit-billing"><ion-icon name="create"></ion-icon></span>
+                    </div>
+                </div>
+                <div class="checkout-data-billing">
+                </div>
+            </div>
+            <div class="checkout-step checkout-step-two">
+                <div class="checkout-step-header">
+                    <div class="header-arrow-container-shipping active">
+                        <span class="span-header-arrow-shipping"><ion-icon name="arrow-dropright-circle"></ion-icon></span>
+                    </div>
+                    <div class="header-check-container-shipping">
+                        <span class="span-header-check-shipping"><ion-icon name="checkmark-circle"></ion-icon></span>
+                    </div>
+                    <span class="span-header-shipping">shipping information</span>
+                    <div class="header-edit-container-shipping">
+                        <span class="span-header-edit-shipping"><ion-icon name="create"></ion-icon></span>
+                    </div>
+                </div>
+                <div class="checkout-data-shipping">
+                    <div class="user-checkout-shipping">
+                        <span id="u_add_company"></span>
+                        <span id="u_add_street1"></span>
+                        <span id="u_add_street2"></span>
+                        <span id="u_add_street3"></span>
+                        <span id="u_add_city"></span>
+                        <div class="address-state-zip">
+                            <span maxlength="2" id="u_add_state"></span>
+                            <span id="u_add_zip"></span>
+                        </div>
+                        <span id="u_add_phone"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="checkout-information">
+            <div class="checkout-information-billing active">
+                <div class="checkout-info-header">
+                    <div class="info-header-arrow-container">
+                        <span class="span-info-header-arrow"><ion-icon name="arrow-dropright-circle"></ion-icon></span>
+                    </div>
+                    <span class="span-info-header">billing information</span>
+                </div>
+                <div class='checkout-steps-dropdown-billing'>
+                    <div class='selected-option-billing'>
+                        <span>Select Billing Address*</span>
+                        <ion-icon name="arrow-round-down" class="dropdown-down-arrow"></ion-icon>
+                    </div>
+                    <ul class="bill-address-options">
+                        <?php
+                        $userId = $_SESSION['userid'];
+
+                        // Retrieve data from table using OOP style
+                        $sql = $conn->prepare("SELECT * FROM user_address WHERE u_id = ? ORDER BY u_add_billto DESC");
+                        $sql->bind_param("i", $userId);
+                        $sql->execute();
+                        $result = $sql->get_result();
+
+                        // Create dropdown menu
+                        if ($result->num_rows > 0) {
+                            while ($row = $result->fetch_assoc()) {
+                                echo "<li id='" . $row["u_add_id"] . "'>";
+                                if ($row['u_add_billto'] === 1) {
+                                    echo "<ion-icon name='cash' class = 'option-bill-default-icon'></ion-icon>";
+                                    echo $row["u_add_company"];
+                                    echo " -- ";
+                                    echo $row["u_add_street1"];
+                                    if ($row['u_add_street2'] != null) {
+                                        echo " " . $row['u_add_street2'];
+                                    }
+                                    if ($row['u_add_street3'] != null) {
+                                        echo " " . $row['u_add_street3'];
+                                    }
+                                    echo " " . $row['u_add_city'];
+                                    echo " " . $row['u_add_state'];
+                                    echo " " . $row['u_add_zip'];
+                                    echo " " . $row['u_add_phone'];
+                                    echo "</li>";
+                                } else {
+                                    echo $row["u_add_company"];
+                                    echo " -- ";
+                                    echo $row["u_add_street1"];
+                                    if ($row['u_add_street2'] != null) {
+                                        echo " " . $row['u_add_street2'];
+                                    }
+                                    if ($row['u_add_street3'] != null) {
+                                        echo " " . $row['u_add_street3'];
+                                    }
+                                    echo " " . $row['u_add_city'];
+                                    echo " " . $row['u_add_state'];
+                                    echo " " . $row['u_add_zip'];
+                                    echo " " . $row['u_add_phone'];
+                                    echo "</li>";
+                                }
+                            }
+                        }
+                        ?>
+                    </ul>
+                </div>
+                <div class="checkout-info-continue">
+                    <button id="submitContinueBill" class="submit-continue">Continue</button>
+                    <span>* = Required Field</span>
+                </div>
+            </div>
+            <div class="checkout-information-shipping">
+                <div class="checkout-info-header">
+                    <div class="info-header-arrow-container">
+                        <span class="span-info-header-arrow"><ion-icon name="arrow-dropright-circle"></ion-icon></span>
+                    </div>
+                    <span class="span-info-header">shipping information</span>
+                </div>
+                <div class='checkout-steps-dropdown-shipping'>
+                    <div class='selected-option-shipping'>
+                        <span>Select Shipping Address*</span>
+                        <ion-icon name="arrow-round-down" class="dropdown-down-arrow"></ion-icon>
+                    </div>
+                    <ul class="ship-address-options">
+                        <?php
+                        $userId = $_SESSION['userid'];
+
+                        // Retrieve data from table using OOP style
+                        $sql = $conn->prepare("SELECT * FROM user_address WHERE u_id = ? ORDER BY u_add_shipto DESC");
+                        $sql->bind_param("i", $userId);
+                        $sql->execute();
+                        $result = $sql->get_result();
+
+                        // Create dropdown menu
+                        if ($result->num_rows > 0) {
+                            while ($row = $result->fetch_assoc()) {
+                                echo "<li id='" . $row["u_add_id"] . "'>";
+                                if ($row['u_add_shipto'] === 1) {
+                                    echo "<ion-icon name='car' class = 'option-ship-default-icon'></ion-icon>";
+                                    echo $row["u_add_company"];
+                                    echo " -- ";
+                                    echo $row["u_add_street1"];
+                                    if ($row['u_add_street2'] != null) {
+                                        echo " " . $row['u_add_street2'];
+                                    }
+                                    if ($row['u_add_street3'] != null) {
+                                        echo " " . $row['u_add_street3'];
+                                    }
+                                    echo " " . $row['u_add_city'];
+                                    echo " " . $row['u_add_state'];
+                                    echo " " . $row['u_add_zip'];
+                                    echo " " . $row['u_add_phone'];
+                                    echo "</li>";
+                                } else {
+                                    echo $row["u_add_company"];
+                                    echo " -- ";
+                                    echo $row["u_add_street1"];
+                                    if ($row['u_add_street2'] != null) {
+                                        echo " " . $row['u_add_street2'];
+                                    }
+                                    if ($row['u_add_street3'] != null) {
+                                        echo " " . $row['u_add_street3'];
+                                    }
+                                    echo " " . $row['u_add_city'];
+                                    echo " " . $row['u_add_state'];
+                                    echo " " . $row['u_add_zip'];
+                                    echo " " . $row['u_add_phone'];
+                                    echo "</li>";
+                                }
+                            }
+                        }
+                        ?>
+                    </ul>
+                </div>
+                <div class="checkout-info-continue">
+                    <button id="submitContinueShip" class="submit-continue">Continue</button>
+                    <span>* = Required Field</span>
+                </div>
+                <div class="checkout-back checkout-back-ship">
+                    Back
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="confirm-checkout-container">
         <a href="./cart/index.php">
             <div class="modify-cart">
