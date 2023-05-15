@@ -58,7 +58,7 @@
 }
 
 .fl-table tr:nth-child(even) {
-    background: var(--indicator-fill);
+    background: var(--bg-medium);
 }
 
 .fl-table tr:last-child {

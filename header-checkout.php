@@ -81,6 +81,7 @@ $_SESSION['total_items'] = $total_items;
     <script defer src="./js/checkout-popups.js"></script>
     <script defer src="./js/checkout-dropdown-billing.js"></script>
     <script defer src="./js/checkout-dropdown-shipping.js"></script>
+    <script defer src="./js/checkout-dropdown-ship-method.js"></script>
     <script src="./js/breadcrumbs_navigation.js"></script>
     <!-- JS END -->
 

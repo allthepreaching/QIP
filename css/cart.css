@@ -56,9 +56,9 @@
     background-color: var(--bg-light);
     margin: 1em 0 1em 0;
     padding: 0.1em;
-    border: 2px solid var(--bg-dark);
+    border: 0.125em solid var(--bg-dark);
     border-radius: 0.3125em;
-    box-shadow: 2px 2px 2px 1px var(--indicator-fill);
+    box-shadow: 0.125em 0.125em 0.125em 0.0625em var(--indicator-fill);
 }
 
 .checkout-steps-list {
@@ -98,6 +98,13 @@
     padding: 0.125em;
 }
 
+.header-arrow-container-review,
+.header-arrow-container-payment,
+.header-check-container-payment,
+.header-edit-container-payment,
+.header-arrow-container-ship-method,
+.header-check-container-ship-method,
+.header-edit-container-ship-method,
 .header-arrow-container-shipping,
 .header-check-container-shipping,
 .header-edit-container-shipping,
@@ -107,12 +114,15 @@
     display: none;
 }
 
+.header-arrow-container-review.active,
+.header-arrow-container-payment.active,
+.header-check-container-payment.active,
+.header-arrow-container-ship-method.active,
+.header-check-container-ship-method.active,
 .header-arrow-container-shipping.active,
 .header-check-container-shipping.active,
-.header-edit-container-shipping.active,
 .header-arrow-container-billing.active,
-.header-check-container-billing.active,
-.header-edit-container-billing.active {
+.header-check-container-billing.active {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -124,6 +134,21 @@
     cursor: pointer;
 }
 
+.header-edit-container-payment.active,
+.header-edit-container-ship-method.active,
+.header-edit-container-shipping.active,
+.header-edit-container-billing.active {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 1.5em;
+    height: 1.5em;
+    cursor: pointer;
+}
+
+.span-header-arrow-review,
+.span-header-arrow-payment,
+.span-header-arrow-ship-method,
 .span-header-arrow-shipping,
 .span-header-arrow-billing {
     display: flex;
@@ -133,6 +158,8 @@
     font-size: 1.5em;
 }
 
+.span-header-check-payment,
+.span-header-check-ship-method,
 .span-header-check-shipping,
 .span-header-check-billing {
     display: flex;
@@ -142,6 +169,9 @@
     font-size: 1.5em;
 }
 
+.span-header-review,
+.span-header-payment,
+.span-header-ship-method,
 .span-header-shipping,
 .span-header-billing {
     width: 100%;
@@ -151,17 +181,25 @@
     margin: 0 0.25em 0 0.25em;
 }
 
+.span-header-edit-payment,
+.span-header-edit-ship-method,
 .span-header-edit-shipping,
 .span-header-edit-billing {
     display: flex;
     justify-content: center;
     align-items: center;
-    color: var(--text-orange);
+    color: var(--text-dark);
     font-size: 1.25em;
 }
 
-.checkout-data-billing,
-.checkout-data-shipping {
+.checkout-data-payment,
+.checkout-data-ship-method-notes,
+.checkout-data-ship-method-account,
+.checkout-data-ship-method-method,
+.checkout-data-shipping-backorder,
+.checkout-data-shipping-bill-type,
+.checkout-data-shipping-address,
+.checkout-data-billing {
     font-size: 0.75em;
     font-weight: 500;
     font-style: italic;
@@ -178,17 +216,23 @@
     background-color: var(--bg-medium);
     margin: 0.1em;
     padding: 0.25em;
-    border: 1px solid var(--bg-light);
+    border: 0.0625em solid var(--bg-light);
     border-radius: 0.3125em;
 }
 
-.checkout-information-billing,
-.checkout-information-shipping {
+.checkout-information-review,
+.checkout-information-payment,
+.checkout-information-ship-method,
+.checkout-information-shipping,
+.checkout-information-billing {
     display: none;
 }
 
-.checkout-information-billing.active,
-.checkout-information-shipping.active {
+.checkout-information-review.active,
+.checkout-information-payment.active,
+.checkout-information-ship-method.active,
+.checkout-information-shipping.active,
+.checkout-information-billing.active {
     display: block;
     width: 100%;
 }
@@ -196,6 +240,7 @@
 .checkout-info-header {
     display: flex;
     align-items: center;
+    margin-bottom: 0.25em;
 }
 
 .info-header-arrow-container {
@@ -224,26 +269,39 @@
     margin: 0 0.25em 0 0.25em;
 }
 
-.checkout-steps-dropdown-billing,
-.checkout-steps-dropdown-shipping {
+.checkout-steps-dropdown-payment,
+.checkout-steps-dropdown-ship-method,
+.checkout-steps-dropdown-shipping-backorder,
+.checkout-steps-dropdown-shipping-bill-type,
+.checkout-steps-dropdown-shipping-address,
+.checkout-steps-dropdown-billing {
     position: relative;
     display: inline-block;
     width: 100%;
     font-size: 0.75em;
     border: 0.1em solid var(--indicator-fill);
     border-radius: 0.3125em;
-    box-shadow: 2px 2px 2px 1px var(--indicator-fill);
+    box-shadow: 0.125em 0.125em 0.125em 0.0625em var(--indicator-fill);
 }
 
-.selected-option-billing,
-.selected-option-shipping {
+.checkout-steps-dropdown-shipping-bill-type,
+.checkout-steps-dropdown-shipping-address {
+    margin-top: 1.5em;
+}
+
+.selected-option-payment,
+.selected-option-ship-method,
+.selected-option-shipping-address,
+.selected-option-shipping-bill-type,
+.selected-option-shipping-backorder,
+.selected-option-billing {
     display: flex;
     justify-content: space-between;
     align-items: center;
     width: 100%;
     background-color: var(--bg-light);
     padding: 0.25em;
-    border: 1px solid var(--bg-dark);
+    border: 0.0625em solid var(--bg-dark);
     cursor: pointer;
 }
 
@@ -264,8 +322,12 @@
     transition: transform 0.5s;
 }
 
-.bill-address-options,
-.ship-address-options {
+.payment-options,
+.ship-method-options,
+.ship-address-options,
+.ship-bill-type-options,
+.ship-backorder-options,
+.bill-address-options {
     display: block;
     position: absolute;
     top: 100%;
@@ -278,31 +340,115 @@
     overflow-y: auto;
     max-height: 0;
     transition: max-height 0.5s ease;
+    z-index: 10;
 }
 
-.bill-address-options.active,
-.ship-address-options.active {
+.payment-options.active,
+.ship-method-options.active,
+.ship-address-options.active,
+.ship-bill-type-options.active,
+.ship-backorder-options.active,
+.bill-address-options.active {
     max-height: 10em;
     border: 0.0625em solid var(--bg-dark);
     border-radius: 0.3125em;
     cursor: pointer;
+    box-shadow: 0.125em 0.125em 0.125em 0.0625em var(--indicator-fill);
+    z-index: 10;
 }
 
-.bill-address-options li,
-.ship-address-options li {
+.payment-options li,
+.ship-method-options li,
+.ship-address-options li,
+.ship-bill-type-options li,
+.ship-backorder-options li,
+.bill-address-options li {
     display: flex;
     align-items: center;
     padding: 0.5em;
 }
 
-.bill-address-options li:hover,
-.ship-address-options li:hover {
+.payment-options li:hover,
+.ship-method-options li:hover,
+.ship-address-options li:hover,
+.ship-bill-type-options li:hover,
+.ship-backorder-options li:hover,
+.bill-address-options li:hover {
     background-color: var(--bg-medium);
 }
 
-.option-bill-default-icon,
-.option-ship-default-icon {
+.option-ship-default-icon,
+.option-bill-default-icon {
     font-size: 1.5em;
+}
+
+.ship-method-weight {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    margin-bottom: 0.5em;
+    margin-left: 1em;
+}
+
+.ship-method-weight-title,
+.ship-method-weight-weight {
+    font-size: 0.85em;
+    font-weight: 800;
+    text-transform: capitalize;
+    margin-right: 2em;
+}
+
+.ship-method-account-number {
+    display: none;
+}
+
+.ship-method-account-number.active,
+.ship-method-delivery-instructions,
+.order-review-po,
+.order-review-notes {
+    display: block;
+    border: 0.0625em solid var(--bg-dark);
+    border-radius: 0.3125em;
+    box-shadow: 0.125em 0.125em 0.125em 0.0625em var(--indicator-fill);
+    margin-top: 1em;
+}
+
+.order-review-po input,
+.order-review-notes input,
+.ship-method-account-number input,
+.ship-method-delivery-instructions input {
+    width: 100%;
+    font-size: 0.75em;
+    padding: 0.5em;
+}
+
+.ship-method-account-number input[type='text'] {
+    text-transform: uppercase;
+}
+
+.order-review-po input[type='text']::placeholder,
+.order-review-notes input[type='text']::placeholder,
+.ship-method-account-number input[type='text']::placeholder,
+.ship-method-delivery-instructions input[type='text']::placeholder {
+    text-transform: capitalize;
+}
+
+.policy-notes {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    font-size: 0.75em;
+    margin-top: 1em;
+}
+
+.note-title {
+    font-weight: 800;
+    text-decoration: underline;
+}
+
+.ship-method-notes span:not(:last-of-type) {
+    margin-bottom: 0.75em;
 }
 
 .checkout-info-continue {

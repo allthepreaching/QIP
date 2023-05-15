@@ -105,6 +105,10 @@ if (isset($_SESSION['cart_message'])) {
 
                 // </td> variable
                 $tdClose = '</td>';
+                $tdClose = '</td>';
+                $trClose = '</tr>';
+                $tdLight = '<td class = "tdLight">';
+                $subTotal = 0;
 
                 // Check if the cart is empty
                 if (empty($_SESSION['cart'])) {
@@ -118,7 +122,8 @@ if (isset($_SESSION['cart_message'])) {
                     foreach ($_SESSION['cart'] as $itemKey => $item) {
 
                         // Calculate the line total for this item
-                        $line_total = $item['qty'] * $item['price'];
+                        $line_total_int = ($item['qty'] * $item['price']);
+                        $line_total = number_format(($item['qty'] * $item['price']), 2);
 
                         // Display the item and allow quantity adjustment
                         echo '<tr>';
@@ -130,17 +135,27 @@ if (isset($_SESSION['cart_message'])) {
 
                               <input type='submit' id='update-cart-qty' value='Update'>
                               </form></td>";
-                        echo '<td>' . $item['price'] . $tdClose;
-                        echo '<td>' . $line_total . $tdClose;
+                        echo '<td>$' . $item['price'] . $tdClose;
+                        echo '<td>$' . $line_total . $tdClose;
                         echo "<td><form method='post' action='./includes/remove-item.inc.php'>
                                  <input type='hidden' name='itemKey' value='" . $itemKey . "'>
                                  <button id='remove-link' type='submit'><ion-icon id='remove-button' name='close-circle'></ion-icon></button>
                                  </form></td>";
                         echo '</tr>';
+                        $subTotal += $line_total_int;
                     }
                 }
                 ?>
             <tbody>
+        </table>
+        <table class="fl-table" id="sub-tax-frt-total" role="none">
+            <?php
+
+            // subtotal
+            echo '<tr><td class = "tdDark">Sub-Total' . $tdClose . $tdLight . '$' . number_format($subTotal, 2) . $tdClose . $trClose;
+
+            ?>
+            </tr>
         </table>
     </div>
 </div>
