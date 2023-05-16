@@ -9,6 +9,7 @@ bin-release/
 /images
 **/thumbs/
 /video
+/docs
 dbh.atp.php
 dbh.gd.php
 dbh.wamp.php
